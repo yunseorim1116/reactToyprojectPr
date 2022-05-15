@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TotalAmount from "./totalAmount";
 
 const ExpendDate = ({ data }) => {
-  console.log(data);
-  return data.map((datas) => (
-    <>
-      <div>
-        <div>{datas[0].date}</div>
-      </div>
-      <TotalAmount datas={datas} />
+  const [item, setItem] = useState([]);
 
-      {datas.map((ele) => (
-        <div>{ele.item}</div>
+  const onChange = (e) => {
+    data.forEach((ele) => {
+      if (ele[0].date == e.target.value) {
+        setItem(ele);
+      }
+    });
+  };
+
+  return (
+    <>
+      <select onChange={onChange}>
+        {data.map((datas) => (
+          <option value={data[0].date}>{datas[0].date}</option>
+        ))}
+      </select>
+      <TotalAmount datas={item} />
+      {item.map((item) => (
+        <div>{item.item}</div>
       ))}
     </>
-  ));
+  );
 };
 export default ExpendDate;
