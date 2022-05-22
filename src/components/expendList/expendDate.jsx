@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import TotalAmount from "./totalAmount";
 
 const ExpendDate = ({ data }) => {
+  console.log(data);
   const [item, setItem] = useState([]);
 
   const onChange = (e) => {
-    // data.filter ((ele)=>{
-
+    // data.forEach ((ele)=>{
     //   if(ele[0].date == e.target.value{
     //     setItem(ele)
     //   })
-
     // })
     setItem(data.filter((i) => i[0].date == e.target.value)[0]);
   };
